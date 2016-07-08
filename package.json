@@ -4,10 +4,10 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "build": "browserify src/client.js -o dist/bundle.js && echo 'built!'",
+    "build": "browserify src/client.js -o dist/bundle.js && (say 'go es!' || echo 'built!')",
     "watch": "chokidar 'src/**/*.js' 'test/**/*.js' -c 'npm test && npm run build'",
     "test": "standard && tape test/**/*.spec.js | tap-notify | tap-spec",
-    "start": "npm i --only=dev && npm run build && node src/server.js"
+    "start": "npm run build && node src/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "browserify": "^13.0.1",
     "chokidar-cli": "^1.2.0",
+    "clone": "^1.0.2",
     "shortid": "^2.2.6",
     "standard": "^7.1.2",
     "tap-notify": "^1.0.0",

@@ -215,6 +215,7 @@ test('Turn :: Self-Destruct', (t) => {
   const turn = new Turn(board, bikes, inputs)
 
   turn.setInput(0, C.SELF_DESTRUCT)
+  t.equal(turn.bikes[0].alive, true, 'bike shouldnt self-destruct til turn evolves')
   const nextTurn = turn.evolve()
   t.equal(nextTurn.bikes[0].alive, false, 'the bike should break down')
   t.deepEqual(nextTurn.board, [
@@ -223,6 +224,19 @@ test('Turn :: Self-Destruct', (t) => {
     [0, 0, 0]
   ], 'the bike and its trail should be cleaned up from the board')
   t.deepEqual(nextTurn.inputs, [null], 'inputs should be reset as always')
+  t.end()
+})
+
+test('Turn :: dirForPos', (t) => {
+  const turn = new Turn([
+    [0, 0, 0],
+    [0, 0, 0],
+    [0, 0, 0]
+  ])
+  t.equal(turn.dirForPos(0, 1), C.DOWN)
+  t.equal(turn.dirForPos(1, 0), C.RIGHT)
+  t.equal(turn.dirForPos(1, 2), C.LEFT)
+  t.equal(turn.dirForPos(2, 1), C.UP)
   t.end()
 })
 // const alivePlayers = players.filter(player => player.isAlive())

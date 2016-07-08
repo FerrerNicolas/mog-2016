@@ -5,11 +5,35 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      background: #EEEEEE;
+    }
+
+    #chatContainer {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 150px;
+      background: white;
+    }
+
+    #chatContainer input {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 50px;
+
+      border: none;
+      padding: 0px 10px;
+      border-top: 1px solid rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
   <canvas id="myCanvas"></canvas>
+  <div id="chatContainer">
+    <input id="chatInput" placeholder="Say something!">    
+  </div>
   <script src="bundle.js"></script>
 </body>
